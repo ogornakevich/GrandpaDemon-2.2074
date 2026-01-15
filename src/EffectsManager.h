@@ -5,53 +5,9 @@ using namespace geode::prelude;
 
 class EffectsManager {
     public:
-        inline static void addInfinitySymbol(CCPoint iconPos, CCNode* layer, int aredlPos) {
-
-            if (aredlPos == 0 && !Mod::get()->getSettingValue<bool>("grandpa-demon-disable")) {
-                return;
-            }
-                
-            if (layer->getChildByID("grd-infinity") != nullptr) {
-                return;
-            }
-
-            CCSprite* infinityBase = CCSprite::createWithSpriteFrameName("GrD_demon4_infinity.png"_spr);
-            infinityBase->setZOrder(30);
-            infinityBase->setColor({ 255, 233, 136 });
-            infinityBase->setPositionX(iconPos.x - 0.4);
-            infinityBase->setPositionY(iconPos.y + 14);
-
-            infinityBase->setOpacity(100);
-            infinityBase->setScale(0.4f);
-
-            auto fadein = CCEaseSineInOut::create(CCFadeTo::create(1.5f, 200));
-            auto fadeout = CCEaseSineInOut::create(CCFadeTo::create(1.5f, 60));
-            auto sequence1 = CCSequence::create(fadein, fadeout, nullptr);
-            auto repeatSequence1 = CCRepeatForever::create(sequence1);
-
-            auto scalein = CCEaseSineInOut::create(CCScaleTo::create(1.5f, 0.45f));
-            auto scaleout = CCEaseSineInOut::create(CCScaleTo::create(1.5f, 0.35f));
-            auto sequence2 = CCSequence::create(scalein, scaleout, nullptr);
-            auto repeatSequence2 = CCRepeatForever::create(sequence2);
-
-            infinityBase->runAction(repeatSequence1);
-            infinityBase->runAction(repeatSequence2);
-
-            ccBlendFunc blending = {GL_ONE, GL_ONE};
-            infinityBase->setBlendFunc(blending);
-
-            infinityBase->setID("grd-infinity");
-
-            layer->addChild(infinityBase);
-        }
-
         inline static void infinityBackground(LevelInfoLayer* layer, int aredlPos) {
             
             if (Mod::get()->getSettingValue<bool>("infinite-demon-disable")) {
-                return;
-            }
-
-            if (layer->getChildByID("grd-infinity") != nullptr) {
                 return;
             }
 
