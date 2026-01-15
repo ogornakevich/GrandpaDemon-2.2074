@@ -88,7 +88,6 @@ class $modify(GrDInfoLayer, LevelInfoLayer) {
 
         if (aredlPos <= 24) {
             EffectsManager::infinityBackground(this, aredlPos);
-            EffectsManager::addInfinitySymbol(newIcon->getPosition(), this, aredlPos);
 
             if (!Mod::get()->getSettingValue<bool>("particles-disable")) {
                 bool isGrandpa = false;
