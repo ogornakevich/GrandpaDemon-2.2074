@@ -49,7 +49,6 @@ class $modify(LevelCell) {
         }
 
         CCSprite* newIcon = ListManager::getSpriteFromPosition(aredlPos, false);
-        //CCSprite* newIcon = CCSprite::createWithSpriteFrameName("GrD_demon0.png"_spr);
         auto layer = m_mainLayer->getChildByID("grd-demon-icon-layer");
 
         auto newPos = originalIcon->getPosition();
@@ -77,9 +76,5 @@ class $modify(LevelCell) {
         originalIcon->setVisible(false);
 
         layer->addChild(newIcon);
-
-        if (aredlPos <= 24) {
-            EffectsManager::addInfinitySymbol(newIcon->getPosition(), layer, aredlPos);
-        }
     }
 };
